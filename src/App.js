@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PostDetailPage from './pages/PostDetailPage';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+    document.body.classList.toggle('dark-theme', !isDarkTheme);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="page-container">
+        <header>
+          <nav>
+            <Link to="/">Home</Link>
+            <div className="theme-switcher">
+              <label className="switch">
+                <input type="checkbox" checked={isDarkTheme} onChange={toggleTheme} />
+                <span className="slider"></span>
+              </label>
+              <span className="theme-label">{isDarkTheme ? '🌙 Dark Mode' : '☀️ Light Mode'}</span>
+            </div>
+          </nav>
+        </header>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/posts/:id" element={<PostDetailPage />} />
+        </Routes>
+        <footer>
+          <p>&copy; 2024 My SPA Application</p>
+        </footer>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

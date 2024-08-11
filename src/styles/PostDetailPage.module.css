@@ -1,0 +1,37 @@
+.postDetail {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+
+    background-color: var(--card-background-color-light);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.postDetail h1 {
+    margin-bottom: 20px;
+
+    font-size: 28px;
+
+    color: var(--text-color-light);
+    transition: color 0.3s;
+}
+
+.postDetail p {
+    font-size: 18px;
+    line-height: 1.6;
+    
+    color: var(--text-color-light);
+    transition: color 0.3s;
+}
+
+/* Темная тема */
+body.dark-theme .postDetail {
+    background-color: var(--card-background-color-dark);
+}
+
+body.dark-theme .postDetail h1,
+body.dark-theme .postDetail p {
+    color: var(--text-color-dark);
+}

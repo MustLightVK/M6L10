@@ -1,0 +1,14 @@
+.postList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: background-color 0.3s;
+}
+
+/* Темная тема */
+body.dark-theme .postList {
+    background-color: var(--background-color-dark);
+}
