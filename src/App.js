@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import PostDetailPage from './pages/PostDetailPage';
-import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -15,25 +16,12 @@ const App = () => {
   return (
     <Router>
       <div className="page-container">
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <div className="theme-switcher">
-              <label className="switch">
-                <input type="checkbox" checked={isDarkTheme} onChange={toggleTheme} />
-                <span className="slider"></span>
-              </label>
-              <span className="theme-label">{isDarkTheme ? '🌙 Dark Mode' : '☀️ Light Mode'}</span>
-            </div>
-          </nav>
-        </header>
+        <Header isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/posts/:id" element={<PostDetailPage />} />
         </Routes>
-        <footer>
-          <p>&copy; 2024 My SPA Application</p>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );
